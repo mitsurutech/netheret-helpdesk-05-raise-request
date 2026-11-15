@@ -40,4 +40,22 @@ sign in as `tier1@netheret.example` and log one for a company.
 - The confirmation page answers 404 to a customer from another company.
 - Each error message is linked to its field with `aria-describedby`.
 
-<!-- links -->
+## Learn this step
+
+This is step 5 of 16 of **Task 2. Developing the solution**, a free series of T Level Digital Software Development
+lessons that builds the Netheret help desk in agile sprints with Python and Flask. Read the lesson for this step:
+[Raising a support request](https://mitsurutech.co.uk/resources/t-level/dsd-t2-05-raise-request).
+
+- Previous step: [step 04, signing in, roles and sessions](https://github.com/mitsurutech/netheret-helpdesk-04-sign-in)
+- Next step: [step 06, the request queue and filters](https://github.com/mitsurutech/netheret-helpdesk-06-queue)
+- [Every free T Level Digital lesson](https://mitsurutech.co.uk/resources/t-level)
+- [Teach these lessons to your class on MitsuruTech](https://mitsurutech.co.uk/learning), [see the pricing](https://mitsurutech.co.uk/pricing) or
+  [start a free year for your college](https://mitsurutech.co.uk/signup)
+
+## About
+
+Written by [Mitsuru Technologies](https://mitsurutech.co.uk) (MitsuruTech) as a teaching example for T Level Digital
+Software Development. The Netheret IT Support Solutions brief is from Pearson's sample assessment material; this code
+and its notes are our own, and are not published, endorsed or approved by Pearson or the Department for Education.
+'T Level' is a registered trade mark of the Department for Education.
+

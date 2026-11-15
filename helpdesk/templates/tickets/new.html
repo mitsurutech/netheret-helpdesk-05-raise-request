@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% from "_macros.html" import error_summary, field_error %}
+{% block title %}Raise a support request{% endblock %}
+{% block content %}
+  <h1>Raise a support request</h1>
+  {{ error_summary(errors) }}
+
+  <form method="post" novalidate>
+    {% if companies %}
+    <div class="field">
+      <label for="company_id">Customer's company</label>
+      {{ field_error(errors, "company_id") }}
+      <select id="company_id" name="company_id"{% if errors.company_id %} aria-describedby="company_id-error"{% endif %}>
+        <option value="">Choose a company</option>
+        {% for company in companies %}
+        <option value="{{ company.id }}"{% if form.company_id == company.id|string %} selected{% endif %}>{{ company.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    {% endif %}
+
+    <div class="field">
+      <label for="title">Title</label>
+      <span class="hint" id="title-hint">A few words, for example "Printer will not print".</span>
+      {{ field_error(errors, "title") }}
+      <input type="text" id="title" name="title" maxlength="150" value="{{ form.title }}"
+             aria-describedby="title-hint{% if errors.title %} title-error{% endif %}">
+    </div>
+
+    <div class="field">
+      <label for="description">What is happening?</label>
+      <span class="hint" id="description-hint">What you were doing, what you saw and any error message.</span>
+      {{ field_error(errors, "description") }}
+      <textarea id="description" name="description"
+                aria-describedby="description-hint{% if errors.description %} description-error{% endif %}">{{ form.description }}</textarea>
+    </div>
+
+    <div class="field">
+      <label for="category">Category</label>
+      {{ field_error(errors, "category") }}
+      <select id="category" name="category"{% if errors.category %} aria-describedby="category-error"{% endif %}>
+        <option value="">Choose a category</option>
+        {% for category in categories %}
+        <option value="{{ category }}"{% if form.category == category %} selected{% endif %}>{{ category|capitalize }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="priority">Priority</label>
+      <span class="hint" id="priority-hint">Critical means the business cannot work at all.</span>
+      {{ field_error(errors, "priority") }}
+      <select id="priority" name="priority" aria-describedby="priority-hint{% if errors.priority %} priority-error{% endif %}">
+        <option value="">Choose a priority</option>
+        {% for priority in priorities %}
+        <option value="{{ priority }}"{% if form.priority == priority %} selected{% endif %}>{{ priority|capitalize }}</option>
+        {% endfor %}
+      </select>
+    </div>
+
+    <button type="submit">Raise request</button>
+  </form>
+{% endblock %}

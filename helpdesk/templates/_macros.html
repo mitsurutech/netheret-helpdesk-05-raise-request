@@ -1,0 +1,25 @@
+{# Small pieces of HTML used by many forms. Import them with:
+   {% from "_macros.html" import error_summary, field_error %} #}
+
+{# A box at the top of the form listing every problem, each one a link that
+   moves the focus to the field with the problem. #}
+{% macro error_summary(errors) %}
+{% if errors %}
+<div class="error-summary" role="alert">
+  <h2>There is a problem</h2>
+  <ul>
+    {% for field, message in errors.items() %}
+    <li><a href="#{{ field }}">{{ message }}</a></li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+{% endmacro %}
+
+{# The message shown next to one field. The field points at it with
+   aria-describedby="{{ name }}-error" so screen readers read it out. #}
+{% macro field_error(errors, name) %}
+{% if errors[name] %}
+<span class="field-error" id="{{ name }}-error">{{ errors[name] }}</span>
+{% endif %}
+{% endmacro %}

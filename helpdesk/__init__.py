@@ -32,9 +32,10 @@ def create_app():
     db.init_app(app)
 
     # Each part of the app is a blueprint: a group of pages in its own file.
-    from . import auth, main
+    from . import auth, main, tickets
     app.register_blueprint(auth.bp)
     app.register_blueprint(main.bp)
+    app.register_blueprint(tickets.bp)
 
     # Make any tables that do not exist yet. Importing models first tells
     # SQLAlchemy which tables there are.

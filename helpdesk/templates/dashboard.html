@@ -5,12 +5,15 @@
   <p class="lead">You are signed in as {{ role_names[g.user.role] }}{% if g.user.company %} for {{ g.user.company.name }}{% endif %}.</p>
 
   {% if g.user.role == "customer" %}
-  <p>Here you will be able to raise support requests and follow them.</p>
+  <p>Something not working? Tell us about it and we will help.</p>
+  <p><a class="button" href="{{ url_for('tickets.new_request') }}">Raise a support request</a></p>
   {% elif g.user.role == "tier1" %}
   <p>Here you will triage new requests, use the knowledge base and escalate what you cannot fix.</p>
+  <p><a class="button" href="{{ url_for('tickets.new_request') }}">Log a request for a customer</a></p>
   {% elif g.user.role in ["tier2", "tier3"] %}
   <p>Here you will work on escalated requests and see your on-site jobs.</p>
   {% elif g.user.role == "manager" %}
   <p>Here you will assign work, schedule jobs and see the reports.</p>
+  <p><a class="button" href="{{ url_for('tickets.new_request') }}">Log a request for a customer</a></p>
   {% endif %}
 {% endblock %}
